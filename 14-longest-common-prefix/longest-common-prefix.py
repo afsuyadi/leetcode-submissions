@@ -14,18 +14,18 @@ class Solution:
                     break
                 # print(letter, str[pointer])
                 if letter != str[pointer]: # quit loop if there is any unsimilar letter.
-                    print("break", letter,str[pointer])
+                    # print("break", letter,str[pointer])
                     break
                 else:
                     is_similar += 1
             if is_similar == len(strs): # check is number of similar letters equal to strs' length
                 idx += 1 # assign the similat letter's index
             else:
-                print("not the same", is_similar)
+                # print("not the same", is_similar)
                 break
             pointer += 1 # points at what index we are comparing.
         # print(idx)
         if idx == -1:
             return ""
-        print(idx)
+        # print(idx)
         return strs[0][:idx+1]
