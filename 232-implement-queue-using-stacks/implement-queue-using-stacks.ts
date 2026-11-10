@@ -1,39 +1,39 @@
-class MyQueue {
-    private inStack: number[];
-    private outStack: number[];
 
+class MyQueue {
+    private inArray: number[];
+    private outArray: number[];
     constructor() {
-        this.inStack = [];
-        this.outStack = [];
+        this.inArray = [];
+        this.outArray = [];
     }
 
     push(x: number): void {
-        this.inStack.push(x)
+        this.inArray.push(x)
     }
 
     pop(): number {
-        if (this.outStack.length === 0) {
-            while (this.inStack.length > 0) {
-                const popped = this.inStack.pop()!
-                this.outStack.push(popped)
-            }
+        // remember, FIFO. Uses stack Operators.
+        if (this.outArray.length === 0) {
+            while (this.inArray.length !== 0) {
+                const popIn = this.inArray.pop()!;
+                this.outArray.push(popIn)
+            }            
         }
-        return this.outStack.pop()!
+        return this.outArray.pop()!;        
     }
 
     peek(): number {
-        if (this.outStack.length === 0) {
-            while (this.inStack.length > 0) {
-                const popped = this.inStack.pop()!
-                this.outStack.push(popped)
+        if (this.outArray.length === 0) { 
+            while (this.inArray.length !== 0) {
+                const popIn = this.inArray.pop()!;
+                this.outArray.push(popIn)
             }
-    }   return this.outStack[this.outStack.length - 1]
-}
+        }
+        
+        return this.outArray[this.outArray.length - 1];
+    }
 
     empty(): boolean {
-        if (this.inStack.length === 0 && this.outStack.length === 0) {
-            return true
-        }
-        return false
+        return this.outArray.length === 0 && this.inArray.length === 0;
     }
 }
